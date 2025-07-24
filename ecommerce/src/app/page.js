@@ -16,7 +16,7 @@ export default async function Home() {
   return (
     <main className="flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold text-center mt-10">E-Commerce</h1>
-      <ul className="mt-20 grid grid-cols-2 gap-10">
+      <ul className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
           {data.stories.map((story) => (
             <li key={story.id}>
               <StoryblokStory story={story} />
