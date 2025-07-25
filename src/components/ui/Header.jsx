@@ -18,7 +18,7 @@ export const Header = () => {
                     <NavigationMenuTrigger>Navigation</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <NavigationMenuLink asChild>
-                                <Link href="/" className="text-xs">Home</Link>
+                                <Link href="/page" className="text-xs">Home</Link>
                             </NavigationMenuLink>
                         <NavigationMenuLink asChild>
                                 <Link href="/page" className="text-xs">FAQ</Link>
