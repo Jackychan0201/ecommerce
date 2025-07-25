@@ -1,12 +1,9 @@
-import { Button } from "@/components/ui/button";
-
 export const Product = ({ blok }) => {
   return (
-    <div className="flex flex-col items-center justify-center">
-        <h1>Title: {blok.title}</h1>
-        <p>Description: {blok.description}</p>
+    <div className="flex flex-col items-center justify-center border-2 border-black-200">
+        <img src={blok.image} width="200" height="200"></img>
+        <h1>{blok.title}</h1>
         <p>Price: {blok.price}</p>
-        <Button variant="default" size="sm">Request</Button>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { getStoryblokApi } from '@/app/storyblok';
 import { StoryblokStory } from '@storyblok/react/rsc';
 import { Header } from '@/components/ui/Header';
+import { Footer } from '@/components/ui/Footer';
 
 export async function fetchData() {
 	const storyblokApi = getStoryblokApi();
@@ -15,18 +16,18 @@ export default async function Home() {
   const { data } = await fetchData();
 
   return (
-    <div>
-      <Header/>
-      <main className="flex flex-col items-center justify-center">
+    <div className="flex flex-col min-h-full">
+      <Header />
+      <main className="flex-grow flex flex-col items-center justify-center">
         <ul className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
-            {data.stories.map((story) => (
-              <li key={story.id}>
-                <StoryblokStory story={story} />
-              </li>
-            )
-          )}
+          {data.stories.map((story) => (
+            <li key={story.id}>
+              <StoryblokStory story={story} />
+            </li>
+          ))}
         </ul>
       </main>
+      <Footer />
     </div>
   );
 }
