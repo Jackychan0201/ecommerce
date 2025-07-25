@@ -17,17 +17,26 @@ export const Header = () => {
                 <NavigationMenuItem className="flex xs:hidden">
                     <NavigationMenuTrigger>Navigation</NavigationMenuTrigger>
                     <NavigationMenuContent>
-                        <NavigationMenuLink asChild>
-                                <Link href="/page" className="text-xs">Home</Link>
-                            </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                                <Link href="/page" className="text-xs">FAQ</Link>
-                        </NavigationMenuLink>
-                        <NavigationMenuLink asChild>
-                                <Link href="/page" className="text-xs">About</Link>
-                        </NavigationMenuLink>
+                        <NavigationMenuList>
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild>
+                                    <Link href="/page" className="text-xs">Home</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild>
+                                    <Link href="/page" className="text-xs">FAQ</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <NavigationMenuLink asChild>
+                                    <Link href="/page" className="text-xs">About</Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                        </NavigationMenuList>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
+    
                 <NavigationMenuList className="hidden xs:flex">
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild>
