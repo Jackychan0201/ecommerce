@@ -17,17 +17,23 @@ export const Header = () => {
                 <NavigationMenuItem className="block xs:hidden">
                     <NavigationMenuTrigger>Navigation</NavigationMenuTrigger>
                     <NavigationMenuContent>
-                        <div>
-                            <NavigationMenuLink asChild>
-                                <Link href="/page" className="text-xs">FAQ</Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                                <Link href="/page" className="text-xs">About</Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                                <Link href="/page" className="text-xs">Home</Link>
-                            </NavigationMenuLink>
-                        </div>
+                        <ul>
+                            <li>
+                                <NavigationMenuLink asChild>
+                                    <Link href="/page" className="text-xs">FAQ</Link>
+                                </NavigationMenuLink>
+                            </li>
+                            <li>
+                                <NavigationMenuLink asChild>
+                                    <Link href="/page" className="text-xs">About</Link>
+                                </NavigationMenuLink>
+                            </li>
+                            <li>
+                                <NavigationMenuLink asChild>
+                                    <Link href="/page" className="text-xs">Home</Link>
+                                </NavigationMenuLink>
+                            </li>
+                        </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
     
