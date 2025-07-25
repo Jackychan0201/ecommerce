@@ -65,7 +65,7 @@ export const Header = () => {
 
       <div className="mx-auto flex-grow flex justify-center items-center">
         <p className="text-sm font-bold text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">
-          E-Commerce
+          LEGO4DOLLAZ
         </p>
       </div>
     </div>

@@ -1,32 +1,12 @@
-import { getStoryblokApi } from '@/app/storyblok';
-import { StoryblokStory } from '@storyblok/react/rsc';
 import { Header } from '@/components/ui/Header';
 import { Footer } from '@/components/ui/Footer';
-
-export async function fetchData() {
-	const storyblokApi = getStoryblokApi();
-  const data = await storyblokApi.get('cdn/stories', {
-    version: 'draft',
-    starts_with: 'products'
-  });
-  return data;
-}
+import { ProductCatalog } from '@/components/ui/ProductCatalog';
 
 export default async function Home() {
-  const { data } = await fetchData();
-
   return (
     <div className="flex flex-col min-h-full">
       <Header />
-      <main className="flex-grow flex flex-col items-center justify-center">
-        <ul className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
-          {data.stories.map((story) => (
-            <li key={story.id}>
-              <StoryblokStory story={story} />
-            </li>
-          ))}
-        </ul>
-      </main>
+      <ProductCatalog/>
       <Footer />
     </div>
   );
