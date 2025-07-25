@@ -21,21 +21,21 @@ export const Header = () => {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
                 <ul>
-                    <li>
+                    <li key="home">
                         <NavigationMenuLink asChild>
                             <Link href="/">
                             Home
                             </Link>
                         </NavigationMenuLink>
                     </li>
-                    <li>
+                    <li key="faq">
                         <NavigationMenuLink asChild>
                             <Link href="/page">
                             FAQ
                             </Link>
                         </NavigationMenuLink>
                     </li>
-                    <li>
+                    <li key="about">
                         <NavigationMenuLink asChild>
                             <Link href="/page">
                             About
