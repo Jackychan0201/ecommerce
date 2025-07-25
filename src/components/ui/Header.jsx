@@ -14,26 +14,18 @@ export const Header = () => {
     return (
         <div className="w-full flex flex-row justify-center items-center">
             <NavigationMenu className="absolute left-0">
-                <NavigationMenuItem className="flex xs:hidden">
+                <NavigationMenuItem className="block xs:hidden">
                     <NavigationMenuTrigger>Navigation</NavigationMenuTrigger>
                     <NavigationMenuContent>
-                        <NavigationMenuList>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink asChild>
-                                    <Link href="/page" className="text-xs">Home</Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink asChild>
-                                    <Link href="/page" className="text-xs">FAQ</Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink asChild>
-                                    <Link href="/page" className="text-xs">About</Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                        </NavigationMenuList>
+                        <NavigationMenuLink asChild>
+                            <Link href="/page" className="text-xs">Home</Link>
+                        </NavigationMenuLink>
+                        <NavigationMenuLink asChild>
+                            <Link href="/page" className="text-xs">FAQ</Link>
+                        </NavigationMenuLink>
+                        <NavigationMenuLink asChild>
+                            <Link href="/page" className="text-xs">About</Link>
+                        </NavigationMenuLink>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
     
