@@ -20,21 +20,29 @@ export const Header = () => {
               Menu
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                    <Link href="/">
-                      Home
-                    </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                    <Link href="/page">
-                      FAQ
-                    </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                    <Link href="/page">
-                      About
-                    </Link>
-                </NavigationMenuLink>
+                <ul>
+                    <li>
+                        <NavigationMenuLink asChild>
+                            <Link href="/">
+                            Home
+                            </Link>
+                        </NavigationMenuLink>
+                    </li>
+                    <li>
+                        <NavigationMenuLink asChild>
+                            <Link href="/page">
+                            FAQ
+                            </Link>
+                        </NavigationMenuLink>
+                    </li>
+                    <li>
+                        <NavigationMenuLink asChild>
+                            <Link href="/page">
+                            About
+                            </Link>
+                        </NavigationMenuLink>
+                    </li>
+                </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>
