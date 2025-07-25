@@ -54,14 +54,14 @@ export const Header = () => {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="/page">
+              <Link href="/faq">
                 FAQ
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="/page">
+              <Link href="/about">
                 About
               </Link>
             </NavigationMenuLink>
