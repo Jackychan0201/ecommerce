@@ -1,5 +1,6 @@
 import { getStoryblokApi } from '@/app/storyblok';
 import { StoryblokStory } from '@storyblok/react/rsc';
+import { Header } from '@/components/ui/Header';
 
 export async function fetchData() {
 	const storyblokApi = getStoryblokApi();
@@ -15,7 +16,7 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold text-center mt-10">E-Commerce</h1>
+      <Header></Header>
       <ul className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
           {data.stories.map((story) => (
             <li key={story.id}>
