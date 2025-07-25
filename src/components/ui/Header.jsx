@@ -19,13 +19,13 @@ export const Header = () => {
                     <NavigationMenuContent>
                         <ul>
                             <li>
+                                <Link href="/" className="text-xs">Home</Link>
+                            </li>
+                            <li>
                                 <Link href="/page" className="text-xs">FAQ</Link>
                             </li>
                             <li>
                                 <Link href="/page" className="text-xs">About</Link>
-                            </li>
-                            <li>
-                                <Link href="/page" className="text-xs">Home</Link>
                             </li>
                         </ul>
                     </NavigationMenuContent>
