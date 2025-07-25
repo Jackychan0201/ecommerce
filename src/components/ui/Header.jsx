@@ -1,4 +1,5 @@
-import Link from "next/link" 
+import Link from "next/link";
+import * as React from "react";
 
 import {
   NavigationMenu,
@@ -22,25 +23,19 @@ export const Header = () => {
             <NavigationMenuContent>
                 <ul>
                     <li key="home">
-                        <NavigationMenuLink asChild>
-                            <Link href="/home">
-                                Home
-                            </Link>
-                        </NavigationMenuLink>
+                         <NavigationMenuLink asChild>
+                            <Link href="/">Home</Link>
+                         </NavigationMenuLink>
                     </li>
                     <li key="faq">
-                        <NavigationMenuLink asChild>
-                            <Link href="/page">
-                                FAQ
-                            </Link>
-                        </NavigationMenuLink>
+                         <NavigationMenuLink asChild>
+                            <Link href="/faq">FAQ</Link>
+                         </NavigationMenuLink>
                     </li>
-                    <li key="abo">
-                        <NavigationMenuLink asChild>
-                            <Link href="/page">
-                                About
-                            </Link>
-                        </NavigationMenuLink>
+                    <li key="about">
+                         <NavigationMenuLink asChild>
+                            <Link href="/about">About</Link>
+                         </NavigationMenuLink>
                     </li>
                 </ul>
             </NavigationMenuContent>
