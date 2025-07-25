@@ -22,25 +22,13 @@ export const Header = () => {
             <NavigationMenuContent>
                 <ul>
                     <li key="home">
-                        <NavigationMenuLink asChild>
-                            <Link href="/">
                             Home
-                            </Link>
-                        </NavigationMenuLink>
                     </li>
                     <li key="faq">
-                        <NavigationMenuLink asChild>
-                            <Link href="/page">
                             FAQ
-                            </Link>
-                        </NavigationMenuLink>
                     </li>
                     <li key="about">
-                        <NavigationMenuLink asChild>
-                            <Link href="/page">
                             About
-                            </Link>
-                        </NavigationMenuLink>
                     </li>
                 </ul>
             </NavigationMenuContent>
