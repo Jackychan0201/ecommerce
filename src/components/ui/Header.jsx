@@ -21,21 +21,21 @@ export const Header = () => {
               Menu
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-                <ul>
+                <ul className="flex flex-col gap-2 px-4 py-2">
                     <li key="home">
-                         <NavigationMenuLink asChild>
-                            <Link href="/">Home</Link>
-                         </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                        <Link href="/">Home</Link>
+                    </NavigationMenuLink>
                     </li>
                     <li key="faq">
-                         <NavigationMenuLink asChild>
-                            <Link href="/faq">FAQ</Link>
-                         </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                        <Link href="/faq">FAQ</Link>
+                    </NavigationMenuLink>
                     </li>
                     <li key="about">
-                         <NavigationMenuLink asChild>
-                            <Link href="/about">About</Link>
-                         </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                        <Link href="/about">About</Link>
+                    </NavigationMenuLink>
                     </li>
                 </ul>
             </NavigationMenuContent>
