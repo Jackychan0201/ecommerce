@@ -1,3 +1,5 @@
+import Link from "next/link" 
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -5,54 +7,72 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-import Link from "next/link"
 
 export const Header = () => {
   return (
-    <div className="w-full flex justify-center items-center relative h-10">
-        <NavigationMenu className="absolute left-2">
-            <NavigationMenuItem className="block sm:hidden">
-                <NavigationMenuTrigger className="text-xs">Menu</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                    <ul className="flex flex-col">
-                        <li>
-                            <Link href="/" className="text-xs">Home</Link>
-                        </li>
-                        <li>
-                            <Link href="/page" className="text-xs">FAQ</Link>
-                        </li>
-                        <li>
-                            <Link href="/page" className="text-xs">About</Link>
-                        </li>
-                    </ul>
-                </NavigationMenuContent>
-            </NavigationMenuItem>
+    <div className="w-full flex justify-center items-center relative h-10 bg-white shadow-sm rounded-lg p-2">
+      <NavigationMenu className="absolute left-2 block sm:hidden">
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger className="text-xs rounded-md px-3 py-1.5 font-medium">
+              Menu
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                    <Link href="/">
+                      Home
+                    </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                    <Link href="/page">
+                      FAQ
+                    </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                    <Link href="/page">
+                      About
+                    </Link>
+                </NavigationMenuLink>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
 
-            <NavigationMenuList className="hidden sm:flex">
-                <NavigationMenuItem>
-                    <NavigationMenuLink asChild>
-                        <Link href="/" className="text-xs">Home</Link>
-                    </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <NavigationMenuLink asChild>
-                        <Link href="/page" className="text-xs">FAQ</Link>
-                    </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <NavigationMenuLink asChild>
-                        <Link href="/page" className="text-xs">About</Link>
-                    </NavigationMenuLink>
-                </NavigationMenuItem>
-            </NavigationMenuList>
-        </NavigationMenu>
+      <NavigationMenu className="hidden sm:flex absolute left-2">
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <Link href="/">
+                Home
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <Link href="/page">
+                FAQ
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <Link href="/page">
+                About
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
 
-      <div className="mx-auto">
-        <p className="text-sm font-bold text-center sm:text-base md:text-lg lg:text-2xl">
+      <div className="mx-auto flex-grow flex justify-center items-center">
+        <p className="text-sm font-bold text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">
           E-Commerce
         </p>
       </div>
     </div>
   )
 }
+
+export default Header;
