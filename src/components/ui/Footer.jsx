@@ -5,7 +5,7 @@ export const Footer = () => {
           LEGO4DOLLAZ
         </p>
         <p className="text-2xs text-center sm:text-xs md:text-sm lg:text-base text-gray-800">
-            Project is created by Jackychan0201
+            ©2025 Project is created by Jackychan0201
         </p>
       </div>
   )
