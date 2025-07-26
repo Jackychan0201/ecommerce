@@ -62,8 +62,8 @@ export default function FAQ() {
                 C'mon, it's my internship.
               </p>
               <p>
-                Each opinion is important for me. If you like this page, then I am glad I am actually learning something
-                (and hopefully will earn money for that in future)
+                Each opinion is important to me. If you like this page, then I am glad I am actually learning something
+                (and hopefully will earn money for that in the future)
               </p>
             </AccordionContent>
           </AccordionItem>
