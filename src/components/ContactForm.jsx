@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 
 const phoneRegex = new RegExp(
-  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+  /^\+?[1-9]\d{1,14}$/
 );
 
 const formSchema = z.object({

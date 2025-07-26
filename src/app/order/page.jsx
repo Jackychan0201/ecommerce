@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
@@ -44,6 +45,7 @@ export default function OrderFormPage() {
   };
 
   return (
+    <Suspense>
     <div className="h-full">
       <div className="hidden sm:flex sm:h-full sm:flex-row sm:items-center">
         <div className="h-full w-1/2 flex flex-col items-center p-8 gap-5">
@@ -126,5 +128,6 @@ export default function OrderFormPage() {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 }
