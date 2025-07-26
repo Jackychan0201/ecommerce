@@ -2,7 +2,7 @@ import { storyblokInit, apiPlugin, getStoryblokApi as getSbApi } from "@storyblo
 import { ProductCard } from "@/components/ui/ProductCard";
 
 storyblokInit({
-  accessToken: "exQ721uiv3yb7PziuRR9Fgtt",
+  accessToken: process.env.STORYBLOK_API,
   use: [apiPlugin],
   components: {
     product: ProductCard
