@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
@@ -35,6 +36,8 @@ export const ContactForm = ({title, quantity, price}) => {
         },
     });
 
+    const router = useRouter();
+
     const onSubmit = async (data) => {
     try {
       data = {...data, "title": title, "quantity": quantity, "price": price};
@@ -48,6 +51,7 @@ export const ContactForm = ({title, quantity, price}) => {
       if (!response.ok) throw new Error('Email failed');
       alert('Email sent!');
       form.reset();
+      router.push('/');
     } catch (err) {
       alert('Something went wrong');
       console.error(err);
