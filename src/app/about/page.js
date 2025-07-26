@@ -1,14 +1,7 @@
 import { Header } from '@/components/ui/Header';
 import { Footer } from '@/components/ui/Footer';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 
-
-export default async function FAQ() {
+export default function FAQ() {
   return (
     <div className="flex flex-col min-h-full">
       <Header />

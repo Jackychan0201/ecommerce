@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion"
 
 
-export default async function FAQ() {
+export default function FAQ() {
   return (
     <div className="flex flex-col min-h-full">
       <Header />
