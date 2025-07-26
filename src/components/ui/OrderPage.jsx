@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/accordion";
 import { ContactForm } from "@/components/ui/ContactForm";
 
-export default function OrderPage() {
+export const OrderPage = () => {
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
   const price = searchParams.get("price");
