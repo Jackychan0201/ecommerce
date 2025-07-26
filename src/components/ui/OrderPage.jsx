@@ -53,7 +53,7 @@ export const OrderPage = () => {
           <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">
             Contact info
           </p>
-          <ContactForm />
+          <ContactForm title={title} quantity={quantity} price={orderPrice}/>
         </div>
         <div className="h-full w-1/2 bg-gray-200 flex flex-col items-cetner p-8">
           <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Order details</p>
@@ -122,7 +122,7 @@ export const OrderPage = () => {
           <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">
             Contact info
           </p>
-          <ContactForm />
+          <ContactForm title={title} quantity={quantity} price={orderPrice}/>
         </div>
       </div>
     </div>

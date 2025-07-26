@@ -24,7 +24,7 @@ const formSchema = z.object({
   tel: z.string().regex(phoneRegex, 'Invalid Number!').nonempty("Phone number is required"),
 });
 
-export const ContactForm = () => {
+export const ContactForm = ({title, quantity, price}) => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -35,9 +35,28 @@ export const ContactForm = () => {
         },
     });
 
+    const onSubmit = async (data) => {
+    try {
+      data = {...data, "title": title, "quantity": quantity, "price": price};
+      console.log(data);
+      const response = await fetch('api/emailSend', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error('Email failed');
+      alert('Email sent!');
+      form.reset();
+    } catch (err) {
+      alert('Something went wrong');
+      console.error(err);
+    }
+  };
+
     return (
         <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => {})} className="flex flex-col w-[60%] gap-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-[60%] gap-6">
             {['email', 'fname', 'lname', 'tel'].map((field, idx) => (
             <FormField
                 key={idx}
