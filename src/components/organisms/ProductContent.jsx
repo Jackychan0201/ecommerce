@@ -7,19 +7,19 @@ export const ProductContent = ({ blok }) => {
 
     return (
         <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-gray-100 via-blue-50 to-yellow-50">
-            <div className="flex flex-col items-center lg:flex-row gap-8 bg-white/80 rounded-xl shadow-lg p-8 border border-gray-200 w-full max-w-4xl mx-4 my-8">
+            <div className="flex flex-col items-center md:flex-row gap-8 bg-white/80 rounded-xl shadow-lg p-8 border border-gray-200 w-full max-w-4xl mx-4 my-8">
                 <Image
                     src={imageUrl}
                     alt={blok.title}
                     width={400}
                     height={400}
-                    className="min-w-[10rem] min-h-[10rem] w-[70%] h-[70%] m-4 rounded-lg border-4 border-blue-200 shadow-md object-contain"
+                    className="md:self-start min-w-[10rem] min-h-[10rem] w-[70%] h-[70%] m-4 rounded-lg border-4 border-gray-200 shadow-md object-contain"
                 />
                 <div className="flex flex-col items-center m-4 gap-y-6 w-full">
-                    <p className="font-extrabold text-center text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-blue-700 drop-shadow-sm mb-2">{blok.title}</p>
+                    <p className="font-extrabold text-center text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-800 drop-shadow-sm mb-2">{blok.title}</p>
                     <p className="font-semibold text-center text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-800 mb-2">{blok.price}</p>
                     <p className="font-normal text-center text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 mb-4">{blok.shortDescription}</p>
-                    <Button asChild className="w-full max-w-xs text-lg py-2 rounded-lg shadow-md bg-blue-500 hover:bg-blue-600 text-white font-bold">
+                    <Button asChild className="w-full max-w-xs text-lg py-2 rounded-lg shadow-md text-white font-bold">
                         <Link href={{
                             pathname: "/order",
                             query: {

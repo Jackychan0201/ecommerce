@@ -36,7 +36,7 @@ export const Header = () => {
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="text-sm rounded-md px-3 py-1.5 font-medium">
-              {currentPath === "/" ? "Home" : currentPath === "/faq" ? "FAQ" : "About"}
+              {currentPath === "/" ? "Home" : currentPath === "/faq" ? "FAQ" : currentPath === "/about" ? "About" : "Menu"}
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="flex flex-col gap-2 px-4 py-2">
