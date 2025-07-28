@@ -3,23 +3,22 @@ import Image from "next/image";
 
 const ProductCard = ({ blok, slug }) => {
   console.log(blok.image);
-  // Ensure the image URL starts with "https:"
   const imageUrl = blok.image?.startsWith("https:") ? blok.image : `https:${blok.image}`;
 
   return (
-    <div className="flex flex-col items-center justify-center border-4 border-black-200 rounded-md hover:shadow-lg">
+    <Link href={`/products/${slug}`} className="flex flex-col items-center justify-center rounded-md cursor-pointer group focus:outline-none">
       <Image
         src={imageUrl}
         alt={blok.title}
         width={200}
         height={200}
-        className="min-w-[10rem] min-h-[10rem] size-[16vw] m-4 rounded-md border-3 border-black-200"
+        className="min-w-[9rem] min-h-[9rem] size-[16vw] rounded-md"
       />
-      <Link href={`/products/${slug}`} className="flex flex-col items-center justify-center mt-2 mb-6">
-        <p className="font-bold hover:underline">{blok.title}</p>
+      <div className="flex flex-col items-center justify-center mt-2 mb-6">
+        <p className="font-bold group-hover:underline">{blok.title}</p>
         <p>{blok.price}</p>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
 export default ProductCard

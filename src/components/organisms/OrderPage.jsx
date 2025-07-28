@@ -44,9 +44,7 @@ export const OrderPage = () => {
   const quantity = order.quantity;
   const orderPrice = order.orderPrice;
 
-  // Shared order details UI
   const OrderDetails = ({ imageSize = 120 }) => {
-    // Map imageSize to static Tailwind classes
     let widthClass = "w-32 max-w-[120px]";
     if (imageSize === 90) widthClass = "w-24 max-w-[90px]";
     return (
