@@ -18,7 +18,7 @@ export default function FAQ() {
           <Accordion
             type="single"
             collapsible
-            className="w-full max-w-2xl bg-white/80 rounded-xl shadow-lg p-6 mt-8 border border-gray-200"
+            className="w-full max-w-2xl bg-white/80 rounded-xl shadow-lg p-6 my-8 mx-4 border border-gray-200"
             defaultValue="item-1"
           >
             <AccordionItem value="item-1">

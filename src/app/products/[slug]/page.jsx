@@ -28,7 +28,7 @@ export default async function ProductPage({ params }) {
     return (
       <div className="flex flex-col min-h-full">
         <Header />
-        <main className="flex-grow flex flex-col items-center p-8">
+        <main className="flex-grow flex flex-col items-center">
           <ProductContent blok={data.story.content} />
         </main>
         <Footer />
