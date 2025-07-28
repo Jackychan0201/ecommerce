@@ -14,6 +14,7 @@ import {
 import { ContactForm } from "@/components/organisms/ContactForm";
 import useIsMobile from "@/hooks/is-mobile-observer";
 import { twMerge } from "tailwind-merge";
+import Image from "next/image";
 
 export const OrderPage = () => {
   const searchParams = useSearchParams();
@@ -58,7 +59,13 @@ export const OrderPage = () => {
           <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Order details</p>
           <div className="flex flex-row gap-4 text-balance justify-start my-4">
             <div className="relative size-[30%]">
-              <img src={image} className="rounded-md border-4 border-gray-400" />
+              <Image
+                src={image}
+                alt={title || "Order image"}
+                fill
+                className="rounded-md border-4 border-gray-400 object-cover"
+                sizes="(max-width: 640px) 100vw, 30vw"
+              />
               <Badge className="absolute -top-1 -right-1 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
                 {quantity}
               </Badge>
@@ -96,7 +103,13 @@ export const OrderPage = () => {
             <AccordionContent className="flex flex-col gap-4 text-balance items-center py-2">
               <div className="flex flex-row gap-4 text-balance items-center py-2">
                 <div className="relative w-[20%] h-[20%]">
-                  <img src={image} className="w-full h-full rounded-md border-4 border-gray-400" />
+                  <Image
+                    src={image}
+                    alt={title || "Order image"}
+                    fill
+                    className="w-full h-full rounded-md border-4 border-gray-400 object-cover"
+                    sizes="(max-width: 640px) 100vw, 20vw"
+                  />
                   <Badge className="absolute -top-1 -right-1 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
                     {quantity}
                   </Badge>

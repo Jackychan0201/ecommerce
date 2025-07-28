@@ -16,8 +16,8 @@ export default function FAQ() {
           turpis egestas. Etiam eget scelerisque ligula... 
         </p>
         <p className="mt-2 w-[80%] italic">Okay just kidding. My name is Yauheni Budzko, and I am a fullstack developer, 
-          currently job-less and having and internship at SoftTeco. I love what I am doing, it's pretty challenging and interesting at 
-          the same time. Wanna know how it will turn out? Let's see. And a bit more of Lorem Ipsum for y'all: 
+          currently job-less and having and internship at SoftTeco. I love what I am doing, it&apos;s pretty challenging and interesting at 
+          the same time. Wanna know how it will turn out? Let&apos;s see. And a bit more of Lorem Ipsum for y&apos;all: 
         </p>
         <p className="mt-2 w-[80%]">Vestibulum mattis arcu sit 
           amet imperdiet rhoncus. Aliquam id vehicula eros. Vivamus scelerisque ut odio a dictum. Praesent hendrerit, neque nec dignissim 

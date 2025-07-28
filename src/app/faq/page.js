@@ -59,7 +59,7 @@ export default function FAQ() {
             <AccordionTrigger>How to thank me</AccordionTrigger>
             <AccordionContent className="flex flex-col gap-4 text-balance">
               <p>
-                C'mon, it's my internship.
+                C&apos;mon, it&apos;s my internship.
               </p>
               <p>
                 Each opinion is important to me. If you like this page, then I am glad I am actually learning something
