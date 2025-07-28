@@ -1,6 +1,6 @@
-import { Header } from '@/components/ui/Header';
-import { Footer } from '@/components/ui/Footer';
-import { ProductCatalog } from '@/components/ui/ProductCatalog';
+import { Header } from '@/components/molecules/Header';
+import { Footer } from '@/components/atoms/Footer';
+import { ProductCatalog } from '@/components/organisms/ProductCatalog';
 
 export default async function Home() {
   return (

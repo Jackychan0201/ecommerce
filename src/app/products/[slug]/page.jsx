@@ -1,10 +1,9 @@
 import { getStoryblokApi } from '@/app/storyblok';
-import { StoryblokStory } from '@storyblok/react/rsc';
-import { Header } from '@/components/ui/Header';
-import { Footer } from '@/components/ui/Footer';
-import { ProductContent } from '@/components/ui/ProductContent'
+import { Header } from '@/components/molecules/Header';
+import { Footer } from '@/components/atoms/Footer';
+import { ProductContent } from '@/components/organisms/ProductContent'
 import { notFound } from 'next/navigation';
-
+// this probably should be in next.config.js 
 export async function generateStaticParams() {
   const storyblokApi = getStoryblokApi();
   const { data } = await storyblokApi.get('cdn/stories', {

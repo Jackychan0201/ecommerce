@@ -1,5 +1,5 @@
-import { Header } from '@/components/ui/Header';
-import { Footer } from '@/components/ui/Footer';
+import { Header } from '@/components/molecules/Header';
+import { Footer } from '@/components/atoms/Footer';
 
 export default function FAQ() {
   return (

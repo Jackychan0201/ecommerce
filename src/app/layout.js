@@ -1,5 +1,5 @@
 import "./globals.css";
-import { StoryblokProvider } from "@/components/ui/storyblokProvider";
+import { StoryblokProvider } from "@/lib/providers/storyblokProvider";
 
 export const metadata = {
   title: "Create Next App",

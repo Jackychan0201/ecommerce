@@ -11,37 +11,36 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ContactForm } from "@/components/ui/ContactForm";
+import { ContactForm } from "@/components/organisms/ContactForm";
+import useIsMobile from "@/hooks/is-mobile-observer";
+import { twMerge } from "tailwind-merge";
 
 export const OrderPage = () => {
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
   const price = searchParams.get("price");
   const image = searchParams.get("image");
-
-  const [orderPrice, setOrderPrice] = useState(price);
-  const [quantity, setQuantity] = useState(1);
+  const isMobile = useIsMobile(); 
+  const [order, setOrder] = useState({
+    quantity: 1,
+    orderPrice: (Math.round(parseFloat(price) * 1 * 100) / 100).toFixed(2) + "$",
+  });
 
   const handleChange = (action) => {
-    switch (action) {
-      case "+":
-        setQuantity(quantity + 1);
-        setOrderPrice(
-          (Math.round(parseFloat(price) * (quantity + 1) * 100) / 100).toFixed(2) + "$"
-        );
-        break;
-      case "-":
-        if (quantity > 1) {
-          setQuantity(quantity - 1);
-          setOrderPrice(
-            (Math.round(parseFloat(price) * (quantity - 1) * 100) / 100).toFixed(2) + "$"
-          );
-        }
-        break;
-      default:
-        break;
+    let newQuantity = order.quantity;
+    if (action === "+") {
+      newQuantity += 1;
+    } else if (action === "-" && newQuantity > 1) {
+      newQuantity -= 1;
     }
+    setOrder({
+      quantity: newQuantity,
+      orderPrice: (Math.round(parseFloat(price) * newQuantity * 100) / 100).toFixed(2) + "$",
+    });
   };
+
+  const quantity = order.quantity;
+  const orderPrice = order.orderPrice;
 
   return (
     <div className="h-full">
@@ -58,7 +57,7 @@ export const OrderPage = () => {
         <div className="h-full w-1/2 bg-gray-200 flex flex-col items-cetner p-8">
           <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Order details</p>
           <div className="flex flex-row gap-4 text-balance justify-start my-4">
-            <div className="relative w-[30%] h-[30%]">
+            <div className="relative size-[30%]">
               <img src={image} className="rounded-md border-4 border-gray-400" />
               <Badge className="absolute -top-1 -right-1 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
                 {quantity}
@@ -66,12 +65,15 @@ export const OrderPage = () => {
             </div>
             <div className="flex flex-col gap-3">
               <div>
-                <div className="flex flex-row text-nowrap text-center text-gray-800">
+                <div className={twMerge(
+                  "flex",
+                  isMobile ? "flex-row text-nowrap text-center text-gray-800" : ""
+                )}>
                   <p className="text-medium font-bold text-center text-gray-800">{title}</p>
                   <p>({price})</p>
                 </div>
               </div>
-              <div className="w-fit flex flex-row rounded-sm bg-gray-400 text-gray-800">
+              <div className="w-fit flex flex-row rounded-sm bg-gray-400 text-gray-800 ">
                 <Button className="bg-transparent hover:bg-transparent" onClick={() => handleChange("+")}>+</Button>
                 <Label>{quantity}</Label>
                 <Button className="bg-transparent hover:bg-transparent" onClick={() => handleChange("-")}>-</Button>
@@ -87,10 +89,9 @@ export const OrderPage = () => {
         <Accordion type="single" collapsible className="w-[100%] py-2 px-6 bg-gray-200">
           <AccordionItem value="item-1">
             <AccordionTrigger>
-              <div className="flex flex-row w-[90%] place-content-between text-lg font-medium text-center text-gray-800">
-                <p>Order details</p>
-                <p>{orderPrice}</p>
-              </div>
+              <p className="flex flex-row w-[90%] place-content-between text-lg font-medium text-center text-gray-800">
+                Order details {orderPrice}
+              </p>
             </AccordionTrigger>
             <AccordionContent className="flex flex-col gap-4 text-balance items-center py-2">
               <div className="flex flex-row gap-4 text-balance items-center py-2">
@@ -102,7 +103,9 @@ export const OrderPage = () => {
                 </div>
                 <div className="flex flex-col gap-3">
                   <div>
-                    <div className="flex flex-row text-nowrap text-center text-gray-800">
+                    <div className={twMerge(
+                      "flex flex-row text-nowrap text-center text-gray-800"
+                    )}>
                       <p className="text-medium font-bold text-center text-gray-800">{title}</p>
                       <p>({price})</p>
                     </div>

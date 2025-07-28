@@ -3,8 +3,8 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { Controller, FormProvider, useFormContext, useFormState } from "react-hook-form";
 
-import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
+import { twMerge } from "tailwind-merge";
 
 const Form = FormProvider
 
@@ -55,7 +55,7 @@ function FormItem({
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div data-slot="form-item" className={cn("grid gap-2", className)} {...props} />
+      <div data-slot="form-item" className={twMerge("grid gap-2", className)} {...props} />
     </FormItemContext.Provider>
   );
 }
@@ -70,7 +70,7 @@ function FormLabel({
     <Label
       data-slot="form-label"
       data-error={!!error}
-      className={cn("data-[error=true]:text-destructive", className)}
+      className={twMerge("data-[error=true]:text-destructive", className)}
       htmlFor={formItemId}
       {...props} />
   );
@@ -105,7 +105,7 @@ function FormDescription({
     <p
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn("text-muted-foreground text-sm", className)}
+      className={twMerge("text-muted-foreground text-sm", className)}
       {...props} />
   );
 }
@@ -125,7 +125,7 @@ function FormMessage({
     <p
       data-slot="form-message"
       id={formMessageId}
-      className={cn("text-destructive text-sm", className)}
+      className={twMerge("text-destructive text-sm", className)}
       {...props}>
       {body}
     </p>

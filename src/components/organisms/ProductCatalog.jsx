@@ -1,5 +1,5 @@
 import { getStoryblokApi } from '@/app/storyblok';
-import { ProductCard } from './ProductCard';
+import  ProductCard  from './ProductCard';
 
 export const ProductCatalogSection = ({ stories }) => {
   return (
