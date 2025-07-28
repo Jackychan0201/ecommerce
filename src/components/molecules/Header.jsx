@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import * as React from "react";
 
@@ -19,20 +21,30 @@ export const Header = () => {
     { label: "About", href: "/about" },
   ];
 
+  // Get current path for highlighting
+  const [currentPath, setCurrentPath] = React.useState("");
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(window.location.pathname);
+    }
+  }, []);
+
   return (
-    <div className="w-full flex justify-center items-center relative h-10 bg-white shadow-sm rounded-lg p-2">
+    <div className="w-full flex justify-center items-center relative h-15 bg-white shadow-sm rounded-lg p-2">
       {/* Mobile Navigation */}
       <NavigationMenu className="absolute left-2 block sm:hidden">
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="text-xs rounded-md px-3 py-1.5 font-medium">
-              Menu
+            <NavigationMenuTrigger className="text-sm rounded-md px-3 py-1.5 font-medium">
+              {currentPath === "/" ? "Home" : currentPath === "/faq" ? "FAQ" : "About"}
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="flex flex-col gap-2 px-4 py-2">
                 {navItems.map((item) => (
-                  <li key={item.label}>
-                    <Link href={item.href}>{item.label}</Link>
+                  <li className="text-sm" key={item.label}>
+                    <Link href={item.href} className={currentPath === item.href ? "font-bold underline" : ""}>
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -46,7 +58,7 @@ export const Header = () => {
         <NavigationMenuList>
           {navItems.map((item) => (
             <NavigationMenuItem key={item.label}>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle() + (currentPath === item.href ? " bg-gray-100 font-bold underline" : "") }>
                 <Link href={item.href}>{item.label}</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
