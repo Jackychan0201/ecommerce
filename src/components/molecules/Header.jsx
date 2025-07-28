@@ -13,8 +13,15 @@ import {
 //use map here and export them into a const object
 // const itemsNav = {}
 export const Header = () => {
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "FAQ", href: "/faq" },
+    { label: "About", href: "/about" },
+  ];
+
   return (
     <div className="w-full flex justify-center items-center relative h-10 bg-white shadow-sm rounded-lg p-2">
+      {/* Mobile Navigation */}
       <NavigationMenu className="absolute left-2 block sm:hidden">
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -22,53 +29,35 @@ export const Header = () => {
               Menu
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-                <ul className="flex flex-col gap-2 px-4 py-2">
-                    <li key="home">
-                        <Link href="/">Home</Link>
-                    </li>
-                    <li key="faq">
-                        <Link href="/faq">FAQ</Link>
-                    </li>
-                    <li key="about">
-                        <Link href="/about">About</Link>
-                    </li>
-                </ul>
+              <ul className="flex flex-col gap-2 px-4 py-2">
+                {navItems.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href}>{item.label}</Link>
+                  </li>
+                ))}
+              </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
 
+      {/* Desktop Navigation */}
       <NavigationMenu className="hidden sm:flex absolute left-2">
         <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="/">
-                Home
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="/faq">
-                FAQ
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="/about">
-                About
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
+          {navItems.map((item) => (
+            <NavigationMenuItem key={item.label}>
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <Link href={item.href}>{item.label}</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          ))}
         </NavigationMenuList>
       </NavigationMenu>
 
       <div className="mx-auto flex-grow flex justify-center items-center">
-        <p className="text-sm font-bold text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">
-          
+        <Link href="/" className="text-sm font-bold text-center sm:text-base md:text-lg lg:text-2xl text-gray-800 focus:outline-none">
           LEGO4DOLLAZ
-        </p>
+        </Link>
       </div>
     </div>
   )

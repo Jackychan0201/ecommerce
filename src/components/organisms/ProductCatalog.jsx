@@ -19,7 +19,7 @@ export const ProductCatalogSection = ({ stories }) => {
           <h2 className="text-base text-center text-gray-500 italic">Take a look at what we have for you</h2>
         </div>
       </header>
-      <ul className="mt-8 px-4 pb-16 w-full max-w-7xl grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 md:gap-10 xl:gap-12">
+      <ul className="mt-8 px-4 pb-16 w-full max-w-7xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 sm:gap-8 md:gap-10 xl:gap-12">
         {stories.map((story) => (
           <li
             key={story.id}
