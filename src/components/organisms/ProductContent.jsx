@@ -7,7 +7,6 @@ export const ProductContent = ({ blok }) => {
 
     return (
         <div className="flex flex-col items-center lg:flex-row gap-5">
-            {/* Use next image */}
             <Image
                 src={imageUrl}
                 alt={blok.title}

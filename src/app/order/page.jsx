@@ -1,6 +1,7 @@
 import { Suspense } from "react";
-import { OrderPage } from '@/components/organisms/OrderPage';
 import { Loading } from '@/components/atoms/Loading';
+import { OrderPage } from '@/components/organisms/OrderPage';
+
 
 export default function OrderPageWrapper() {
   return (
