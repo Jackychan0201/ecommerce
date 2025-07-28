@@ -1,8 +1,21 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'www.ci.harrisburg.or.us',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'a.storyblok.com',
+                port: '',
+                pathname: '/**',
+            },
+        ],
+    },
+};
 
-
-
-//matcher = [api/public/*]
-//add a midleware routing for this to redirect to 404 when needed. 
 export default nextConfig;

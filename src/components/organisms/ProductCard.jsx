@@ -2,10 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 const ProductCard = ({ blok, slug }) => {
+  console.log(blok.image);
+  // Ensure the image URL starts with "https:"
+  const imageUrl = blok.image?.startsWith("https:") ? blok.image : `https:${blok.image}`;
+
   return (
     <div className="flex flex-col items-center justify-center border-4 border-black-200 rounded-md hover:shadow-lg">
       <Image
-        src={blok.image}
+        src={imageUrl}
         alt={blok.title}
         width={200}
         height={200}

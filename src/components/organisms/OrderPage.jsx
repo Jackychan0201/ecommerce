@@ -17,80 +17,96 @@ import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 
 export const OrderPage = () => {
+  
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
   const price = searchParams.get("price");
-  const image = searchParams.get("image");
-  const isMobile = useIsMobile(); 
+  const imageUrl = searchParams.get("image");
+  const image = imageUrl.startsWith("https:") ? imageUrl : `https:${imageUrl}`;
+  const isMobile = useIsMobile();
   const [order, setOrder] = useState({
     quantity: 1,
     orderPrice: (Math.round(parseFloat(price) * 1 * 100) / 100).toFixed(2) + "$",
   });
 
   const handleChange = (action) => {
-    let newQuantity = order.quantity;
-    if (action === "+") {
-      newQuantity += 1;
-    } else if (action === "-" && newQuantity > 1) {
-      newQuantity -= 1;
-    }
-    setOrder({
-      quantity: newQuantity,
-      orderPrice: (Math.round(parseFloat(price) * newQuantity * 100) / 100).toFixed(2) + "$",
+    setOrder((prev) => {
+      let newQuantity = prev.quantity;
+      if (action === "+") newQuantity += 1;
+      else if (action === "-" && newQuantity > 1) newQuantity -= 1;
+      return {
+        quantity: newQuantity,
+        orderPrice: (Math.round(parseFloat(price) * newQuantity * 100) / 100).toFixed(2) + "$",
+      };
     });
   };
 
   const quantity = order.quantity;
   const orderPrice = order.orderPrice;
 
-  return (
-    <div className="h-full">
-      <div className="hidden sm:flex sm:h-full sm:flex-row sm:items-center">
-        <div className="h-full w-1/2 flex flex-col items-center p-8 gap-5">
-          <p className="text-sm font-bold text-center sm:text-lg md:text-2xl lg:text-3xl text-gray-800">
-            LEGO4DOLLAZ
-          </p>
-          <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">
-            Contact info
-          </p>
-          <ContactForm title={title} quantity={quantity} price={orderPrice}/>
+  // Shared order details UI
+  const OrderDetails = ({ imageSize = 120 }) => {
+    // Map imageSize to static Tailwind classes
+    let widthClass = "w-32 max-w-[120px]";
+    if (imageSize === 90) widthClass = "w-24 max-w-[90px]";
+    return (
+      <div className="flex flex-row gap-4 text-balance justify-start my-4 w-full items-center py-2">
+        <div className={twMerge(
+          "relative flex items-center justify-center aspect-square ",
+          widthClass
+        )}>
+          <Image
+            src={image}
+            alt={title || "Order image"}
+            fill
+            className="object-contain rounded-md border-4 border-gray-400"
+            sizes={imageSize === 90 ? "(max-width: 640px) 100vw, 90px" : "(max-width: 640px) 100vw, 120px"}
+          />
+          <Badge className="absolute -top-1 -right-1 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
+            {quantity}
+          </Badge>
         </div>
-        <div className="h-full w-1/2 bg-gray-200 flex flex-col items-cetner p-8">
-          <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Order details</p>
-          <div className="flex flex-row gap-4 text-balance justify-start my-4">
-            <div className="relative size-[30%]">
-              <Image
-                src={image}
-                alt={title || "Order image"}
-                fill
-                className="rounded-md border-4 border-gray-400 object-cover"
-                sizes="(max-width: 640px) 100vw, 30vw"
-              />
-              <Badge className="absolute -top-1 -right-1 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
-                {quantity}
-              </Badge>
-            </div>
-            <div className="flex flex-col gap-3">
-              <div>
-                <div className={twMerge(
-                  "flex",
-                  isMobile ? "flex-row text-nowrap text-center text-gray-800" : ""
-                )}>
-                  <p className="text-medium font-bold text-center text-gray-800">{title}</p>
-                  <p>({price})</p>
-                </div>
-              </div>
-              <div className="w-fit flex flex-row rounded-sm bg-gray-400 text-gray-800 ">
-                <Button className="bg-transparent hover:bg-transparent" onClick={() => handleChange("+")}>+</Button>
-                <Label>{quantity}</Label>
-                <Button className="bg-transparent hover:bg-transparent" onClick={() => handleChange("-")}>-</Button>
-              </div>
+        <div className="flex flex-col gap-3">
+          <div>
+            <div className={twMerge(
+              "flex flex-row text-nowrap text-center text-gray-800"
+            )}>
+              <p className="text-medium font-bold text-center text-gray-800">{title}</p>
+              <p>({price})</p>
             </div>
           </div>
+          <QuantityControls />
+        </div>
+      </div>
+    );
+  };
+
+  // Shared quantity controls UI
+  const QuantityControls = () => (
+    <div className="w-fit flex flex-row rounded-sm bg-gray-400 text-gray-800">
+      <Button className="bg-transparent hover:bg-transparent" onClick={() => handleChange("+")}>+</Button>
+      <Label>{quantity}</Label>
+      <Button className="bg-transparent hover:bg-transparent" onClick={() => handleChange("-")}>-</Button>
+    </div>
+  );
+
+  return (
+    <div className="h-full">
+      {/* Desktop layout */}
+      <div className="hidden sm:flex sm:h-full sm:flex-row sm:items-center">
+        <div className="h-full w-1/2 flex flex-col items-center p-8 gap-5">
+          <p className="text-sm font-bold text-center sm:text-lg md:text-2xl lg:text-3xl text-gray-800">LEGO4DOLLAZ</p>
+          <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Contact info</p>
+          <ContactForm title={title} quantity={quantity} price={orderPrice} />
+        </div>
+        <div className="h-full w-1/2 bg-gray-200 flex flex-col items-center p-8">
+          <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Order details</p>
+          <OrderDetails imageSize={120} />
           <Label className="self-start text-lg font-medium text-center text-gray-800">TOTAL: {orderPrice}</Label>
         </div>
       </div>
 
+      {/* Mobile layout */}
       <div className="sm:hidden">
         <p className="text-2xl font-bold text-center text-gray-800 my-4">LEGO4DOLLAZ</p>
         <Accordion type="single" collapsible className="w-[100%] py-2 px-6 bg-gray-200">
@@ -101,44 +117,14 @@ export const OrderPage = () => {
               </p>
             </AccordionTrigger>
             <AccordionContent className="flex flex-col gap-4 text-balance items-center py-2">
-              <div className="flex flex-row gap-4 text-balance items-center py-2">
-                <div className="relative w-[20%] h-[20%]">
-                  <Image
-                    src={image}
-                    alt={title || "Order image"}
-                    fill
-                    className="w-full h-full rounded-md border-4 border-gray-400 object-cover"
-                    sizes="(max-width: 640px) 100vw, 20vw"
-                  />
-                  <Badge className="absolute -top-1 -right-1 h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
-                    {quantity}
-                  </Badge>
-                </div>
-                <div className="flex flex-col gap-3">
-                  <div>
-                    <div className={twMerge(
-                      "flex flex-row text-nowrap text-center text-gray-800"
-                    )}>
-                      <p className="text-medium font-bold text-center text-gray-800">{title}</p>
-                      <p>({price})</p>
-                    </div>
-                  </div>
-                  <div className="w-fit flex flex-row rounded-sm bg-gray-400 text-gray-800">
-                    <Button className="bg-transparent" onClick={() => handleChange("+")}>+</Button>
-                    <Label>{quantity}</Label>
-                    <Button className="bg-transparent" onClick={() => handleChange("-")}>-</Button>
-                  </div>
-                </div>
-              </div>
+              <OrderDetails imageSize={90} />
               <Label className="self-start text-lg font-medium text-center text-gray-800">TOTAL: {orderPrice}</Label>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
         <div className="flex flex-col self-center items-center p-8 gap-5">
-          <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">
-            Contact info
-          </p>
-          <ContactForm title={title} quantity={quantity} price={orderPrice}/>
+          <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Contact info</p>
+          <ContactForm title={title} quantity={quantity} price={orderPrice} />
         </div>
       </div>
     </div>

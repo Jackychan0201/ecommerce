@@ -3,11 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const ProductContent = ({ blok }) => {
+    const imageUrl = blok.image?.startsWith("https:") ? blok.image : `https:${blok.image}`;
+
     return (
         <div className="flex flex-col items-center lg:flex-row gap-5">
             {/* Use next image */}
             <Image
-                src={blok.image}
+                src={imageUrl}
                 alt={blok.title}
                 width={400}
                 height={400}
