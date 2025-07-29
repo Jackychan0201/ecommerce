@@ -79,7 +79,6 @@ export const OrderPage = () => {
     );
   };
 
-  // Shared quantity controls UI
   const QuantityControls = () => (
     <div className="w-fit flex flex-row rounded-sm bg-gray-400 text-gray-800">
       <Button className="bg-transparent hover:bg-transparent" onClick={() => handleChange("+")}>+</Button>
@@ -89,39 +88,39 @@ export const OrderPage = () => {
   );
 
   return (
-    <div className="h-full">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-gray-100 via-blue-50 to-yellow-50">
       {/* Desktop layout */}
-      <div className="hidden sm:flex sm:h-full sm:flex-row sm:items-center">
-        <div className="h-full w-1/2 flex flex-col items-center p-8 gap-5">
-          <p className="text-sm font-bold text-center sm:text-lg md:text-2xl lg:text-3xl text-gray-800">LEGO4DOLLAZ</p>
-          <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Contact info</p>
+      <div className="hidden sm:flex sm:h-full sm:flex-row sm:items-center w-full max-w-5xl mx-auto gap-8">
+        <div className="h-full w-1/2 flex flex-col items-center p-10 gap-6 bg-white/80 rounded-xl shadow-lg border border-gray-200">
+          <p className="text-2xl font-extrabold text-center text-blue-700 drop-shadow-sm mb-2">LEGO4DOLLAZ</p>
+          <p className="text-base font-light text-center text-gray-600 mb-4">Contact info</p>
           <ContactForm title={title} quantity={quantity} price={orderPrice} />
         </div>
-        <div className="h-full w-1/2 bg-gray-200 flex flex-col items-center p-8">
-          <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Order details</p>
+        <div className="h-full w-1/2 flex flex-col items-center p-10 gap-6 bg-white/80 rounded-xl shadow-lg border border-gray-200">
+          <p className="text-xl font-semibold text-center text-gray-700 mb-2">Order details</p>
           <OrderDetails imageSize={120} />
-          <Label className="self-start text-lg font-medium text-center text-gray-800">TOTAL: {orderPrice}</Label>
+          <Label className="self-start text-lg font-medium text-center text-blue-700">TOTAL: {orderPrice}</Label>
         </div>
       </div>
 
       {/* Mobile layout */}
-      <div className="sm:hidden">
-        <p className="text-2xl font-bold text-center text-gray-800 my-4">LEGO4DOLLAZ</p>
-        <Accordion type="single" collapsible className="w-[100%] py-2 px-6 bg-gray-200">
+      <div className="sm:hidden w-full flex flex-col items-center gap-6 my-8">
+        <p className="text-2xl font-extrabold text-center text-blue-700 my-4">LEGO4DOLLAZ</p>
+        <Accordion type="single" collapsible className="w-[95%] py-2 px-4 bg-white/80 rounded-xl shadow-lg border border-gray-200">
           <AccordionItem value="item-1">
             <AccordionTrigger>
-              <p className="flex flex-row w-[90%] place-content-between text-lg font-medium text-center text-gray-800">
+              <p className="flex flex-row w-[90%] place-content-between text-lg font-semibold text-center text-gray-700">
                 Order details {orderPrice}
               </p>
             </AccordionTrigger>
             <AccordionContent className="flex flex-col gap-4 text-balance items-center py-2">
               <OrderDetails imageSize={90} />
-              <Label className="self-start text-lg font-medium text-center text-gray-800">TOTAL: {orderPrice}</Label>
+              <Label className="self-start text-lg font-medium text-center text-blue-700">TOTAL: {orderPrice}</Label>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-        <div className="flex flex-col self-center items-center p-8 gap-5">
-          <p className="text-sm font-light text-center sm:text-base md:text-lg lg:text-2xl text-gray-800">Contact info</p>
+        <div className="flex flex-col self-center items-center p-6 gap-5 w-[95%] bg-white/80 rounded-xl shadow-lg border border-gray-200">
+          <p className="text-base font-light text-center text-gray-600">Contact info</p>
           <ContactForm title={title} quantity={quantity} price={orderPrice} />
         </div>
       </div>
