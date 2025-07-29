@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Image from "next/image";
+import ImageMagnifier from "@/components/ui/ImageMagnifier";
 
 export const ProductContent = ({ blok }) => {
     const imageUrl = blok.image?.startsWith("https:") ? blok.image : `https:${blok.image}`;
@@ -8,13 +8,15 @@ export const ProductContent = ({ blok }) => {
     return (
         <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-gray-100 via-blue-50 to-yellow-50">
             <div className="flex flex-col items-center md:flex-row gap-8 bg-white/80 rounded-xl shadow-lg p-8 border border-gray-200 w-full max-w-4xl mx-4 my-8">
-                <Image
+                <div className="md:self-start min-size-[10rem] m-4 rounded-lg border-4 border-gray-200 shadow-md flex items-center justify-center bg-white">
+                  <ImageMagnifier
                     src={imageUrl}
+                    width={300}
+                    height={300}
                     alt={blok.title}
-                    width={400}
-                    height={400}
-                    className="md:self-start min-w-[10rem] min-h-[10rem] w-[70%] h-[70%] m-4 rounded-lg border-4 border-gray-200 shadow-md object-contain"
-                />
+                    className="size-full"
+                  />
+                </div>
                 <div className="flex flex-col items-center m-4 gap-y-6 w-full">
                     <p className="font-extrabold text-center text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-800 drop-shadow-sm mb-2">{blok.title}</p>
                     <p className="font-semibold text-center text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-800 mb-2">{blok.price}</p>
