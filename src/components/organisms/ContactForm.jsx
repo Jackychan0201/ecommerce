@@ -4,7 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { formSchema } from "@/lib/utils/form-schema";
+import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+
+
 import {
   Form,
   FormControl,
@@ -13,6 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+
 
 export const ContactForm = ({title, quantity, price}) => {
 
@@ -29,21 +33,53 @@ export const ContactForm = ({title, quantity, price}) => {
     const router = useRouter();
 
     const onSubmit = async (data) => {
-      data = {...data, "title": title, "quantity": quantity, "price": price};
-      await fetch('api/emailSend', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      toast.success('Email sent!');
-      form.reset();
-      router.push('/');
-   
-  };
+      data = { ...data, title, quantity, price };
+      try {
+        const res = await fetch('api/emailSend', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          toast.success("Email sent successfully", {
+            description: "We will contact you soon, check your inbox!",
+            action: {
+              label: "Home",
+              onClick: () => {
+                router.push('/');
+              } 
+            },
+          });
+          form.reset();
+        } else {
+          toast.error("Something went wrong", {
+            description: "Try again later",
+            action: {
+              label: "Home",
+              onClick: () => {
+                router.push('/');
+              } 
+            },
+          })
+          form.reset();
+        }
+      } catch (e) {
+          toast.error("Something went wrong", {
+            description: "Try again later",
+            action: {
+              label: "Home",
+              onClick: () => {
+                router.push('/');
+              } 
+            },
+          })
+        form.reset();
+      }
+    };
 
     return (
       <Form {...form}>
+        <Toaster richColors position="top-center"/>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col w-full max-w-xl mx-auto gap-10">
           <FormField
             control={form.control}

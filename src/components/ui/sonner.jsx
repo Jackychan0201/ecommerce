@@ -3,8 +3,6 @@
 import { useTheme } from "next-themes"
 import { Toaster as Sonner } from "sonner";
 
-//Probably use this for the popovers
-
 const Toaster = ({
   ...props
 }) => {
