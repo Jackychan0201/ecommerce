@@ -84,9 +84,9 @@ export const OrderPage = () => {
 
   const QuantityControls = () => (
     <div className="w-fit py-2 flex flex-row rounded-sm bg-gray-400 text-gray-800">
-      <Button size="medium" className="bg-transparent hover:bg-transparent text-xl sm:text-2xl md:text-3xl lg:text-4xl px-4" onClick={() => handleChange("+")}>+</Button>
-      <Label className="text-xl sm:text-2xl md:text-3xl lg:text-4xl px-4">{quantity}</Label>
-      <Button size="medium" className="bg-transparent hover:bg-transparent text-xl sm:text-2xl md:text-3xl lg:text-4xl px-4" onClick={() => handleChange("-")}>-</Button>
+      <Button size="medium" className="bg-transparent hover:bg-transparent text-lg sm:text-xl md:text-2xl px-4" onClick={() => handleChange("+")}>+</Button>
+      <Label className="text-lg sm:text-xl md:text-2xl px-4">{quantity}</Label>
+      <Button size="medium" className="bg-transparent hover:bg-transparent text-lg sm:text-xl md:text-2xl px-4" onClick={() => handleChange("-")}>-</Button>
     </div>
   );
 
