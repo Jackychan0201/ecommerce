@@ -1,5 +1,5 @@
 import "./globals.css";
-import { StoryblokProvider } from "@/lib/providers/storyblokProvider";
+import { StoryblokProvider } from "@/lib/providers/storyblok-provider";
 import { Inter } from "next/font/google";
 
 const inter = Inter({

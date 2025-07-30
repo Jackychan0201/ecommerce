@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import ImageMagnifier from "@/components/ui/ImageMagnifier";
+import ImageMagnifier from "@/components/molecules/image-magnifier";
 
 export const ProductContent = ({ blok }) => {
     const imageUrl = blok.image?.startsWith("https:") ? blok.image : `https:${blok.image}`;
