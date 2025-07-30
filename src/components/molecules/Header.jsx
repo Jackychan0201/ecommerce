@@ -30,7 +30,7 @@ export const Header = () => {
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center relative h-15 bg-white shadow-sm rounded-lg p-2">
+    <div className="w-full flex  justify-center items-center relative h-15 bg-white shadow-sm rounded-lg p-2">
       {/* Mobile Navigation */}
       <NavigationMenu className="absolute left-2 block sm:hidden">
         <NavigationMenuList>
