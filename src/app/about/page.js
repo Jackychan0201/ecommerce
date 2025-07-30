@@ -1,6 +1,11 @@
 import { Header } from '@/components/molecules/Header';
 import { Footer } from '@/components/atoms/Footer';
 
+export const metadata = {
+  title: 'About',
+  description: 'About LEGO4DOLLAZ',
+}
+
 export default function FAQ() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-100 via-blue-50 to-yellow-50">
