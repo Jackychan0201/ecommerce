@@ -1,8 +1,8 @@
-import { Header } from '@/components/molecules/Header';
-import { Footer } from '@/components/atoms/Footer';
-import { ProductCatalog } from '@/components/organisms/ProductCatalog';
+import { Header } from '@/components/molecules/header';
+import { Footer } from '@/components/atoms/footer';
+import { ProductCatalog } from '@/components/organisms/product-catalog';
 import { Suspense } from "react";
-import { Loading } from '@/components/atoms/Loading';
+import { Loading } from '@/components/atoms/loading';
 
 export const metadata = {
   title: 'Homepage - LEGO4DOLLAZ',

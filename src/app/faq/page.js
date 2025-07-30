@@ -1,5 +1,5 @@
-import { Header } from '@/components/molecules/Header';
-import { Footer } from '@/components/atoms/Footer';
+import { Header } from '@/components/molecules/header';
+import { Footer } from '@/components/atoms/footer';
 import {
   Accordion,
   AccordionContent,

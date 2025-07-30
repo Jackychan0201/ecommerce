@@ -35,7 +35,7 @@ export const ContactForm = ({title, quantity, price}) => {
     const onSubmit = async (data) => {
       data = { ...data, title, quantity, price };
       try {
-        const res = await fetch('api/emailSend', {
+        const res = await fetch('api/email-send', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),

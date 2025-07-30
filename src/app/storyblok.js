@@ -1,5 +1,5 @@
 import { storyblokInit, apiPlugin, getStoryblokApi as getSbApi } from "@storyblok/react";
-import ProductCard from "@/components/organisms/ProductCard";
+import ProductCard from "@/components/organisms/product-card";
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_API,

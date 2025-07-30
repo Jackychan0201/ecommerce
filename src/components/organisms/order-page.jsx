@@ -13,8 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ContactForm } from "@/components/organisms/ContactForm";
-import useIsMobile from "@/hooks/is-mobile-observer";
+import { ContactForm } from "@/components/organisms/contact-form";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 
@@ -26,7 +25,6 @@ export const OrderPage = () => {
   const price = searchParams.get("price");
   const imageUrl = searchParams.get("image");
   const image = imageUrl.startsWith("https:") ? imageUrl : `https:${imageUrl}`;
-  const isMobile = useIsMobile();
   const [order, setOrder] = useState({
     quantity: 1,
     orderPrice: (Math.round(parseFloat(price) * 1 * 100) / 100).toFixed(2) + "$",
@@ -137,7 +135,7 @@ export const OrderPage = () => {
         </Link>
         <Accordion type="single" collapsible className="w-[95%] py-2 px-4 bg-white/80 rounded-xl shadow-lg border border-gray-200">
           <AccordionItem value="item-1">
-            <AccordionTrigger>
+            <AccordionTrigger className="flex items-center">
               <div className="flex flex-row w-full justify-between items-center font-semibold text-gray-700 text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                 <span className="flex flex-col items-start">
                   <span>Order details <span className="text-gray-500">({orderPrice})</span></span>

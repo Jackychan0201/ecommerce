@@ -1,8 +1,11 @@
 import { getStoryblokApi } from '@/app/storyblok';
-import { Header } from '@/components/molecules/Header';
-import { Footer } from '@/components/atoms/Footer';
-import { ProductContent } from '@/components/organisms/ProductContent'
+import { Header } from '@/components/molecules/header';
+import { Footer } from '@/components/atoms/footer';
+import { ProductContent } from '@/components/organisms/product-content'
 import { notFound } from 'next/navigation';
+import ScrollToTop from '@/lib/utils/scroll-top';
+
+
 // this probably should be in next.config.js 
 export async function generateStaticParams() {
   const storyblokApi = getStoryblokApi();
@@ -27,6 +30,7 @@ export default async function ProductPage({ params }) {
 
     return (
       <div className="flex flex-col min-h-full">
+        <ScrollToTop />
         <Header />
         <main className="flex-grow flex flex-col items-center">
           <ProductContent blok={data.story.content} />
