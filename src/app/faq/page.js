@@ -7,6 +7,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
+export const metadata = {
+  title: 'FAQ',
+  description: 'FAQs LEGO4DOLLAZ',
+}
 
 export default function FAQ() {
   return (
